@@ -1,0 +1,67 @@
+/*
+program : declarationlist
+declarationlist : declarationlist declaration
+		| declaration
+declaration : vardeclaration
+	| fundeclaration
+vardeclaration : typespecifier ID SEMICOLON
+		| typespecifier ID LBRACKET NUM RBRACKET SEMICOLON
+typespecifier : INT
+		| VOID
+fundeclaration : typespecifier ID LPAREN params RPAREN compoundstmt
+params : paramlist
+	| VOID
+paramlist : paramlist COMMA param
+	| param
+param : typespecifier ID
+	| typespecifier ID LBRACKET RBRACKET
+	|
+compoundstmt : LBRACE localdeclarations statementlist RBRACE
+localdeclarations : localdeclarations vardeclaration
+	|
+statementlist : statementlist statement
+		|
+statement : expressionstmt
+	| compoundstmt
+	| selectionstmt
+	| iterationstmt
+	| returnstmt
+expressionstmt : expression SEMICOLON
+		| SEMICOLON
+selectionstmt : IF LPAREN expression RPAREN statement
+		| IF LPAREN expression RPAREN statement ELSE statement
+iterationstmt : WHILE LPAREN expression RPAREN statement
+		| FOR LPAREN expression SEMICOLON expression SEMICOLON expression RPAREN statement
+returnstmt : RETURN SEMICOLON
+		| RETURN expression SEMICOLON
+expression : var ASSIGN expression
+		| simpleexpression
+var : ID
+	| ID LBRACKET expression RBRACKET
+simpleexpression : additiveexpression relop additiveexpression
+		| additiveexpression
+relop : LESSEQUAL
+	| LESS
+	| GREAT
+	| GREATEQUAL
+	| EQUAL
+	| NOTEQUAL
+additiveexpression : additiveexpression addop term
+	| term
+addop : ADD
+	| SUB
+term : term mulop factor
+	| factor
+	| SUB factor	%prec UMINUS
+mulop : MULT
+	| DIV
+factor : LPAREN expression RPAREN
+	| var
+	| call
+	| NUM
+call : ID LPAREN args RPAREN
+args : arglist
+	|
+arglist : arglist COMMA expression
+	| expression
+	*/

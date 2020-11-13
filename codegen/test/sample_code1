@@ -1,0 +1,15 @@
+void foo(int a, int b, int c)
+{
+}
+
+int main()
+{
+	int a;
+	int b;
+	int c;
+	void d;
+
+	a = d + 1;
+	foo(a, b, c);
+	return a;
+}

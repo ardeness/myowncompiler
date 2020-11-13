@@ -1,0 +1,27 @@
+int foo()
+{
+	int b;
+	int i;
+	for(i=0; i<10; i=i+1)
+	{
+		b = b * 0;
+	}
+	return b;
+}	
+
+int main()
+{
+	int a;
+	a = 0;
+
+	if(a == 20)
+	{
+		foo();
+	}
+	else
+	{
+		a = 10;
+	}
+
+	return a;
+}
